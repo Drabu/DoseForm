@@ -1,5 +1,5 @@
+import 'package:doseform/doseform.dart';
 import 'package:flutter/material.dart';
-import 'package:validator/dose_form.dart';
 
 void main() {
   runApp(MyApp());
