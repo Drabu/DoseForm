@@ -3,11 +3,15 @@ part of doseform;
 class DoseForm extends StatefulWidget {
   final Widget? child;
   final bool? shrinkWrap;
+  final bool? primary;
+  final ScrollPhysics? physics;
 
   const DoseForm({
     Key? key,
     this.child,
     this.shrinkWrap,
+    this.physics,
+    this.primary
   }) : super(key: key);
 
   @override
@@ -23,6 +27,8 @@ class DoseFormState extends State<DoseForm> {
     return Form(
       key: _formKey,
       child: ListView(
+        physics: widget.physics,
+        primary: widget.primary,
         shrinkWrap: widget.shrinkWrap ?? false,
         children: _extract(),
       ),
