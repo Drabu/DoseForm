@@ -2,9 +2,12 @@ part of doseform;
 
 class DoseForm extends StatefulWidget {
   final Widget? child;
+  final bool? shrinkWrap;
+
   const DoseForm({
     Key? key,
     this.child,
+    this.shrinkWrap,
   }) : super(key: key);
 
   @override
@@ -14,11 +17,13 @@ class DoseForm extends StatefulWidget {
 class DoseFormState extends State<DoseForm> {
   final _formKey = GlobalKey<FormState>();
   List<FocusNode?> foucNodeList = [];
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: ListView(
+        shrinkWrap: widget.shrinkWrap ?? false,
         children: _extract(),
       ),
     );
