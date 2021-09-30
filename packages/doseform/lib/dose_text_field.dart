@@ -25,35 +25,37 @@ class DoseTextField extends StatelessWidget {
   final void Function(String?)? onFieldSubmitted;
   final TextStyle? style;
   final bool obscureText;
+  final TextAlign? textAlign;
 
 //   final String heading;
 //   final String value;
 
-  DoseTextField({
-    this.isRequired = false,
-    this.onChanged,
-    this.hint,
-    this.error,
-    this.errorMaxLines,
-    this.maxLength,
-    this.nextNode,
-    this.keyboardType = TextInputType.text,
-    this.textInputAction,
-    this.validator,
-    this.textCapitalization = TextCapitalization.sentences,
-    this.maxLines,
-    this.minLines,
-    this.onSaved,
-    this.formatters,
-    FocusNode? currentNode,
-    TextEditingController? textEditingController,
-    InputDecoration? decoration,
-    this.initialValue,
-    this.autovalidateMode = AutovalidateMode.disabled,
-    this.onFieldSubmitted,
-    this.style,
-    this.obscureText = false,
-  })  : currentNode = currentNode ?? FocusNode(),
+  DoseTextField(
+      {this.isRequired = false,
+      this.onChanged,
+      this.hint,
+      this.error,
+      this.errorMaxLines,
+      this.maxLength,
+      this.nextNode,
+      this.keyboardType = TextInputType.text,
+      this.textInputAction,
+      this.validator,
+      this.textCapitalization = TextCapitalization.sentences,
+      this.maxLines,
+      this.minLines,
+      this.onSaved,
+      this.formatters,
+      FocusNode? currentNode,
+      TextEditingController? textEditingController,
+      InputDecoration? decoration,
+      this.initialValue,
+      this.autovalidateMode = AutovalidateMode.disabled,
+      this.onFieldSubmitted,
+      this.style,
+      this.obscureText = false,
+      this.textAlign})
+      : currentNode = currentNode ?? FocusNode(),
         textEditingController = textEditingController ?? TextEditingController(),
         decoration = decoration ??
             InputDecoration(
@@ -81,5 +83,6 @@ class DoseTextField extends StatelessWidget {
       autovalidateMode: autovalidateMode,
       onFieldSubmitted: onFieldSubmitted,
       style: style,
-      obscureText: obscureText);
+      obscureText: obscureText,
+      textAlign: textAlign ?? TextAlign.start);
 }
