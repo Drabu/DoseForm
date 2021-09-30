@@ -23,17 +23,6 @@ class DoseFormState extends State<MiddleWare> {
     );
   }
 
-  @deprecated
-  List<Widget> _extract() {
-    final widgetList = (widget.child as Column).children;
-    for (var element in widgetList) {
-      if (element is DoseTextField) {
-        foucNodeList.add(element.currentNode);
-      }
-    }
-    return widgetList;
-  }
-
   bool validate() {
     return (_formKey.currentState?.validate() ?? true) &&
         (InheritedLayer.of(context)?.validate() ?? true);
