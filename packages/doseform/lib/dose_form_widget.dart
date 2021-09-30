@@ -61,6 +61,9 @@ class DoseFormState extends State<DoseForm> {
     }
     return _formValidationState ?? true && _formFocusState;
   }
+  void save() {
+    _formKey.currentState!.save();
+  }
 
   @override
   void dispose() {
