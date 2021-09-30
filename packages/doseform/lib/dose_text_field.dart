@@ -24,6 +24,7 @@ class DoseTextField extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final void Function(String?)? onFieldSubmitted;
   final TextStyle? style;
+  final bool obscureText;
 
 //   final String heading;
 //   final String value;
@@ -51,6 +52,7 @@ class DoseTextField extends StatelessWidget {
     this.autovalidateMode = AutovalidateMode.disabled,
     this.onFieldSubmitted,
     this.style,
+    this.obscureText = false,
   })  : currentNode = currentNode ?? FocusNode(),
         textEditingController = textEditingController ?? TextEditingController(),
         decoration = decoration ??
@@ -62,22 +64,22 @@ class DoseTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TextFormField(
-        controller: textEditingController,
-        focusNode: currentNode,
-        onChanged: onChanged,
-        maxLength: maxLength,
-        keyboardType: keyboardType,
-        decoration: decoration,
-        textInputAction: nextNode != null ? TextInputAction.next : TextInputAction.done,
-        maxLines: maxLines,
-        minLines: minLines,
-        validator: validator,
-        inputFormatters: formatters,
-        textCapitalization: textCapitalization,
-        onSaved: onSaved,
-        initialValue: initialValue,
-        autovalidateMode: autovalidateMode,
-        onFieldSubmitted: onFieldSubmitted,
-        style: style,
-      );
+      controller: textEditingController,
+      focusNode: currentNode,
+      onChanged: onChanged,
+      maxLength: maxLength,
+      keyboardType: keyboardType,
+      decoration: decoration,
+      textInputAction: nextNode != null ? TextInputAction.next : TextInputAction.done,
+      maxLines: maxLines,
+      minLines: minLines,
+      validator: validator,
+      inputFormatters: formatters,
+      textCapitalization: textCapitalization,
+      onSaved: onSaved,
+      initialValue: initialValue,
+      autovalidateMode: autovalidateMode,
+      onFieldSubmitted: onFieldSubmitted,
+      style: style,
+      obscureText: obscureText);
 }
