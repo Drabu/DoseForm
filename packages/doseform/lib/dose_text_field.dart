@@ -22,6 +22,8 @@ class DoseTextField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final String? initialValue;
   final AutovalidateMode? autovalidateMode;
+  final void Function(String?)? onFieldSubmitted;
+  final TextStyle? style;
 
 //   final String heading;
 //   final String value;
@@ -44,7 +46,11 @@ class DoseTextField extends StatelessWidget {
     this.formatters,
     FocusNode? currentNode,
     TextEditingController? textEditingController,
-    InputDecoration? decoration, this.initialValue, this.autovalidateMode = AutovalidateMode.disabled,
+    InputDecoration? decoration,
+    this.initialValue,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.onFieldSubmitted,
+    this.style,
   })  : currentNode = currentNode ?? FocusNode(),
         textEditingController = textEditingController ?? TextEditingController(),
         decoration = decoration ??
@@ -69,7 +75,9 @@ class DoseTextField extends StatelessWidget {
         inputFormatters: formatters,
         textCapitalization: textCapitalization,
         onSaved: onSaved,
-    initialValue:initialValue ,
-    autovalidateMode:autovalidateMode ,
+        initialValue: initialValue,
+        autovalidateMode: autovalidateMode,
+        onFieldSubmitted: onFieldSubmitted,
+        style: style,
       );
 }
