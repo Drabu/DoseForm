@@ -30,62 +30,67 @@ class MyAppState extends State<MyApp> {
 
   Widget get doseForm {
     return DoseForm(
-      key: _formKey,
-      child: Column(
-        children: [
-          DoseTextField(),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          DoseTextField(
-            isRequired: true,
-          ),
-          ElevatedButton(
-            child: const Text('Validate!'),
-            onPressed: () {
-              _formKey.currentState?.validate();
-            },
-          ),
-        ],
+      formKey: _formKey,
+      child: Center(
+        child: ListView(
+          children: [
+            DoseTextField(),
+            StreamBuilder<Object>(
+                stream: null,
+                builder: (context, snapshot) {
+                  return Container(
+                    child: DoseTextField(
+                      isRequired: true,
+                    ),
+                  );
+                }),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            DoseTextField(
+              isRequired: true,
+            ),
+            ElevatedButton(
+              child: const Text('Validate!'),
+              onPressed: () {
+                _formKey.currentState?.validate();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

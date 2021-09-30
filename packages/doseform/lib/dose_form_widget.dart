@@ -1,24 +1,17 @@
 part of doseform;
 
-class DoseForm extends StatefulWidget {
-  final Widget? child;
-  final bool? shrinkWrap;
-  final bool? primary;
-  final ScrollPhysics? physics;
-
-  const DoseForm({
+class MiddleWare extends StatefulWidget {
+  final Widget child;
+  const MiddleWare({
     Key? key,
-    this.child,
-    this.shrinkWrap,
-    this.physics,
-    this.primary
+    required this.child,
   }) : super(key: key);
 
   @override
   DoseFormState createState() => DoseFormState();
 }
 
-class DoseFormState extends State<DoseForm> {
+class DoseFormState extends State<MiddleWare> {
   final _formKey = GlobalKey<FormState>();
   List<FocusNode?> foucNodeList = [];
 
@@ -26,15 +19,11 @@ class DoseFormState extends State<DoseForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: ListView(
-        physics: widget.physics,
-        primary: widget.primary,
-        shrinkWrap: widget.shrinkWrap ?? false,
-        children: _extract(),
-      ),
+      child: widget.child,
     );
   }
 
+  @deprecated
   List<Widget> _extract() {
     final widgetList = (widget.child as Column).children;
     for (var element in widgetList) {
@@ -46,23 +35,16 @@ class DoseFormState extends State<DoseForm> {
   }
 
   bool validate() {
-    final _formValidationState = _formKey.currentState?.validate();
-    var _formFocusState = false;
-
-    for (var element in (widget.child as Column).children) {
-      if (element is DoseTextField && element.isRequired) {
-        if (element.textEditingController!.text.isEmpty) {
-          //request focus
-          element.currentNode!.requestFocus();
-          _formFocusState = true;
-          break;
-        }
-      }
-    }
-    return _formValidationState ?? true && _formFocusState;
+    return (_formKey.currentState?.validate() ?? true) &&
+        (InheritedLayer.of(context)?.validate() ?? true);
   }
+
   void save() {
     _formKey.currentState!.save();
+  }
+
+  void reset() {
+    InheritedLayer.of(context)?.reset();
   }
 
   @override

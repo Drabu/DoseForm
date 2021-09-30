@@ -3,7 +3,7 @@ part of doseform;
 class DoseTextField extends StatelessWidget {
   final bool isRequired;
   final FocusNode? currentNode;
-  final TextEditingController? textEditingController;
+  final TextEditingController? controller;
   final List<TextInputFormatter>? formatters;
 
   final ValueChanged<String>? onChanged;
@@ -30,33 +30,33 @@ class DoseTextField extends StatelessWidget {
 //   final String heading;
 //   final String value;
 
-  DoseTextField(
-      {this.isRequired = false,
-      this.onChanged,
-      this.hint,
-      this.error,
-      this.errorMaxLines,
-      this.maxLength,
-      this.nextNode,
-      this.keyboardType = TextInputType.text,
-      this.textInputAction,
-      this.validator,
-      this.textCapitalization = TextCapitalization.sentences,
-      this.maxLines,
-      this.minLines,
-      this.onSaved,
-      this.formatters,
-      FocusNode? currentNode,
-      TextEditingController? textEditingController,
-      InputDecoration? decoration,
-      this.initialValue,
-      this.autovalidateMode = AutovalidateMode.disabled,
-      this.onFieldSubmitted,
-      this.style,
-      this.obscureText = false,
-      this.textAlign})
-      : currentNode = currentNode ?? FocusNode(),
-        textEditingController = textEditingController ?? TextEditingController(),
+  DoseTextField({
+    this.isRequired = false,
+    this.onChanged,
+    this.hint,
+    this.error,
+    this.errorMaxLines,
+    this.maxLength,
+    this.nextNode,
+    this.keyboardType = TextInputType.text,
+    this.textInputAction,
+    this.validator,
+    this.textCapitalization = TextCapitalization.sentences,
+    this.maxLines,
+    this.minLines,
+    this.onSaved,
+    this.formatters,
+    FocusNode? currentNode,
+    TextEditingController? controller,
+    InputDecoration? decoration,
+    this.initialValue,
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.onFieldSubmitted,
+    this.style,
+    this.obscureText = false,
+    this.textAlign,
+  })  : currentNode = currentNode ?? FocusNode(),
+        controller = controller ?? TextEditingController(),
         decoration = decoration ??
             InputDecoration(
               hintText: hint,
@@ -65,8 +65,10 @@ class DoseTextField extends StatelessWidget {
             );
 
   @override
-  Widget build(BuildContext context) => TextFormField(
-      controller: textEditingController,
+  Widget build(BuildContext context) {
+    InheritedLayer.of(context)?.register(this);
+    return TextFormField(
+      controller: controller,
       focusNode: currentNode,
       onChanged: onChanged,
       maxLength: maxLength,
@@ -84,5 +86,7 @@ class DoseTextField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       style: style,
       obscureText: obscureText,
-      textAlign: textAlign ?? TextAlign.start);
+      textAlign: textAlign ?? TextAlign.start,
+    );
+  }
 }
