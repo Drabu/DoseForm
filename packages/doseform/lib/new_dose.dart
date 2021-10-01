@@ -23,9 +23,11 @@ class InheritedLayer extends InheritedWidget {
 
   void reset() {
     _fields.forEach((state) {
-      state.controller!.text = "Sam";
+      state.controller!.clear();
     });
   }
+
+
 
   @override
   bool updateShouldNotify(InheritedLayer heera) => heera.child != child;

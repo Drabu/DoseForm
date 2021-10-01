@@ -15,7 +15,7 @@ class DoseTextField extends StatelessWidget {
   final FocusNode? nextNode;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-  final String Function(String?)? validator;
+  final String? Function(String?)? validator;
   final TextCapitalization textCapitalization;
   final int? maxLines;
   final int? minLines;

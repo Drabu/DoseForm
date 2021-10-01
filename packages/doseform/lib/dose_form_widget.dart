@@ -24,13 +24,13 @@ class DoseFormState extends State<MiddleWare> {
   }
 
   bool validate() {
-    return (_formKey.currentState?.validate() ?? true) &&
-        (InheritedLayer.of(context)?.validate() ?? true);
+    final _formInternalValidationResult = (_formKey.currentState?.validate() ?? true);
+    final _focusValdiation = (InheritedLayer.of(context)?.validate() ?? true);
+
+    return _formInternalValidationResult && _focusValdiation;
   }
 
-  void save() {
-    _formKey.currentState!.save();
-  }
+  void save() => _formKey.currentState!.save();
 
   void reset() {
     InheritedLayer.of(context)?.reset();

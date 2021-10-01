@@ -34,12 +34,17 @@ class MyAppState extends State<MyApp> {
       child: Center(
         child: ListView(
           children: [
-            DoseTextField(),
             StreamBuilder<Object>(
                 stream: null,
                 builder: (context, snapshot) {
                   return Container(
                     child: DoseTextField(
+                      validator: (String? v) {
+                        if (v == null || v.isEmpty)
+                          return "some validation";
+                        else
+                          return null;
+                      },
                       isRequired: true,
                     ),
                   );
