@@ -26,7 +26,7 @@ class DoseTextField extends StatelessWidget {
   final TextStyle? style;
   final bool obscureText;
   final TextAlign? textAlign;
-  final bool? autofocus;
+  final bool autofocus;
 
 //   final String heading;
 //   final String value;
