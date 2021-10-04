@@ -26,6 +26,7 @@ class DoseTextField extends StatelessWidget {
   final TextStyle? style;
   final bool obscureText;
   final TextAlign? textAlign;
+  final bool? autofocus;
 
 //   final String heading;
 //   final String value;
@@ -55,6 +56,7 @@ class DoseTextField extends StatelessWidget {
     this.style,
     this.obscureText = false,
     this.textAlign,
+    this.autofocus =false,
   })  : currentNode = currentNode ?? FocusNode(),
         controller = controller ?? TextEditingController(),
         decoration = decoration ??
@@ -69,6 +71,7 @@ class DoseTextField extends StatelessWidget {
     InheritedLayer.of(context)?.register(this);
     return TextFormField(
       controller: controller,
+      autofocus:autofocus,
       focusNode: currentNode,
       onChanged: onChanged,
       maxLength: maxLength,
