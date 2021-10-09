@@ -25,8 +25,3 @@ class DoseFormFieldState extends State<DoseFormField> {
     return widget.child;
   }
 }
-
-// class DoseValidatorError {
-//   String title,
-//   String
-// }
