@@ -90,7 +90,6 @@ class MyAppState extends State<MyApp> {
                 height: 1000,
               ),
               DoseFormField(
-                fieldKey: new GlobalKey<DoseFormFieldState>(),
                 child: Text(
                   'Focus here ',
                   style: TextStyle(

@@ -4,15 +4,12 @@ class DoseFormField extends StatefulWidget {
   final Widget child;
   final String? Function()? validator;
   final FocusNode focusNode;
-  final GlobalKey<DoseFormFieldState> fieldKey;
 
   DoseFormField({
-    required this.fieldKey,
     required this.child,
     required this.validator,
     FocusNode? focusNode,
-  })  : focusNode = focusNode ?? FocusNode(),
-        super(key: fieldKey);
+  }) : focusNode = focusNode ?? FocusNode();
 
   @override
   DoseFormFieldState createState() => DoseFormFieldState();
