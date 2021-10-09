@@ -1,20 +1,24 @@
 part of doseform;
 
 class InheritedLayer extends InheritedWidget {
-  final List<DoseTextField> _fields = [];
+  final List<Object> _fields = [];
   InheritedLayer({required Widget child}) : super(child: child);
 
   static InheritedLayer? of(BuildContext context) =>
       context.findAncestorWidgetOfExactType<InheritedLayer>();
 
-  register(DoseTextField state) {
+  register(dynamic state) {
     _fields.add(state);
   }
 
   bool validate() {
     for (var state in _fields) {
-      if (state.isRequired && state.controller!.text.isEmpty) {
-        state.currentNode!.requestFocus();
+      if (state is DoseTextField && state.isRequired && state.controller!.text.isEmpty) {
+        state.focusNode!.requestFocus();
+        return false;
+      } else if (state is DoseFormFieldState && state.widget.validator != null) {
+        state.widget.validator!();
+        Scrollable.ensureVisible(state.context);
         return false;
       }
     }
@@ -23,11 +27,9 @@ class InheritedLayer extends InheritedWidget {
 
   void reset() {
     _fields.forEach((state) {
-      state.controller!.clear();
+      state is DoseTextField ? state.controller!.clear() : print('');
     });
   }
-
-
 
   @override
   bool updateShouldNotify(InheritedLayer heera) => heera.child != child;

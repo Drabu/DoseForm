@@ -16,24 +16,19 @@ class DoseFormState extends State<MiddleWare> {
   List<FocusNode?> foucNodeList = [];
 
   @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: widget.child,
-    );
-  }
+  Widget build(BuildContext context) => Form(
+        key: _formKey,
+        child: widget.child,
+      );
+
+  void save() => _formKey.currentState!.save();
+
+  void reset() => InheritedLayer.of(context)?.reset();
 
   bool validate() {
     final _formInternalValidationResult = (_formKey.currentState?.validate() ?? true);
     final _focusValdiation = (InheritedLayer.of(context)?.validate() ?? true);
-
     return _formInternalValidationResult && _focusValdiation;
-  }
-
-  void save() => _formKey.currentState!.save();
-
-  void reset() {
-    InheritedLayer.of(context)?.reset();
   }
 
   @override

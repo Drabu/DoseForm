@@ -1,5 +1,5 @@
-import 'package:doseform/doseform.dart';
 import 'package:flutter/material.dart';
+import 'package:doseform/main.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +24,12 @@ class MyAppState extends State<MyApp> {
         body: Center(
           child: doseForm,
         ),
+        floatingActionButton: ElevatedButton(
+          child: Text('Refresh'),
+          onPressed: () {
+            setState(() {});
+          },
+        ),
       ),
     );
   }
@@ -32,9 +38,16 @@ class MyAppState extends State<MyApp> {
     return DoseForm(
       formKey: _formKey,
       child: Center(
-        child: ListView(
-          children: [
-            StreamBuilder<Object>(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: const Text('Validate!'),
+                onPressed: () {
+                  _formKey.currentState?.validate();
+                },
+              ),
+              StreamBuilder<Object>(
                 stream: null,
                 builder: (context, snapshot) {
                   return Container(
@@ -48,53 +61,49 @@ class MyAppState extends State<MyApp> {
                       isRequired: true,
                     ),
                   );
-                }),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            DoseTextField(
-              isRequired: true,
-            ),
-            ElevatedButton(
-              child: const Text('Validate!'),
-              onPressed: () {
-                _formKey.currentState?.validate();
-              },
-            ),
-          ],
+                },
+              ),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              DoseTextField(),
+              SizedBox(
+                height: 1000,
+              ),
+              DoseFormField(
+                fieldKey: new GlobalKey<DoseFormFieldState>(),
+                child: Text(
+                  'Focus here ',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                validator: () => null,
+              ),
+              DoseTextField(
+                isRequired: false,
+              ),
+            ],
+          ),
         ),
       ),
     );

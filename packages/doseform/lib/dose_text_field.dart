@@ -2,7 +2,7 @@ part of doseform;
 
 class DoseTextField extends StatelessWidget {
   final bool isRequired;
-  final FocusNode? currentNode;
+  final FocusNode? focusNode;
   final TextEditingController? controller;
   final List<TextInputFormatter>? formatters;
 
@@ -47,7 +47,7 @@ class DoseTextField extends StatelessWidget {
     this.minLines,
     this.onSaved,
     this.formatters,
-    FocusNode? currentNode,
+    FocusNode? focusNode,
     TextEditingController? controller,
     InputDecoration? decoration,
     this.initialValue,
@@ -56,8 +56,8 @@ class DoseTextField extends StatelessWidget {
     this.style,
     this.obscureText = false,
     this.textAlign,
-    this.autofocus =false,
-  })  : currentNode = currentNode ?? FocusNode(),
+    this.autofocus = false,
+  })  : focusNode = focusNode ?? FocusNode(),
         controller = controller ?? TextEditingController(),
         decoration = decoration ??
             InputDecoration(
@@ -71,8 +71,8 @@ class DoseTextField extends StatelessWidget {
     InheritedLayer.of(context)?.register(this);
     return TextFormField(
       controller: controller,
-      autofocus:autofocus,
-      focusNode: currentNode,
+      autofocus: autofocus,
+      focusNode: focusNode,
       onChanged: onChanged,
       maxLength: maxLength,
       keyboardType: keyboardType,
