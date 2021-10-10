@@ -28,9 +28,6 @@ class DoseTextField extends StatelessWidget {
   final TextAlign? textAlign;
   final bool autofocus;
 
-//   final String heading;
-//   final String value;
-
   DoseTextField({
     this.isRequired = false,
     this.onChanged,

@@ -13,8 +13,10 @@ class InheritedLayer extends InheritedWidget {
 
   bool validate() {
     for (var state in _fields) {
-      if (state is DoseTextField && state.isRequired && state.controller!.text.isEmpty) {
-        state.focusNode!.requestFocus();
+      if (state is DoseTextField && state.isRequired) {
+        state.validator!.call(state.controller?.text) != null
+            ? state.focusNode!.requestFocus()
+            : print('');
         return false;
       } else if (state is DoseFormFieldState && state.widget.validator != null) {
         state.widget.validator!();

@@ -53,7 +53,7 @@ class MyAppState extends State<MyApp> {
                   return Container(
                     child: DoseTextField(
                       validator: (String? v) {
-                        if (v == null || v.isEmpty)
+                        if (v!.contains('other') || v.isEmpty)
                           return "some validation";
                         else
                           return null;
