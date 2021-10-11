@@ -72,7 +72,12 @@ class MyAppState extends State<MyApp> {
               DoseTextField(),
               DoseTextField(),
               DoseTextField(),
-              DoseTextField(),
+              DoseTextField(
+                isRequired: true,
+                validator: (String? a) {
+                  return (a?.contains('Second') ?? false) ? null : 'null';
+                },
+              ),
               DoseTextField(),
               DoseTextField(),
               DoseTextField(),
